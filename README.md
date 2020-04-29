@@ -72,5 +72,5 @@
 
 ![运行截图1](https://github.com/Fofade/douyinFaceDetection/blob/master/img/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE1.png)
 
-![运行截图2](img\运行截图2.png)
+![运行截图2](https://github.com/Fofade/douyinFaceDetection/blob/master/img/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE2.png)
 
