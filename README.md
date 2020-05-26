@@ -1,6 +1,9 @@
 # 抖音智能辅助（人脸检测）
 
 > 用Autojs写的抖音人脸颜值检测脚本
+## 2020-5-26 
+---
+- [x] 支持控件信息更新
 
 ## 支持功能
 
@@ -70,7 +73,7 @@
 
 ---
 
-![运行截图1](https://github.com/Fofade/douyinFaceDetection/blob/master/img/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE1.png)
+![运行截图1](img\运行截图1.png)
 
-![运行截图2](https://github.com/Fofade/douyinFaceDetection/blob/master/img/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE2.png)
+![运行截图2](img\运行截图2.png)
 
