@@ -2,9 +2,9 @@
     "version": [
         "kongjian1.dat",
         "kongjian2.dat",
-        "douyinVersion"
+        "douyinVersion.dat"
     ],
     "kongjian1.dat": "2",
     "kongjian2.dat": "2",
-    "douyinVersion": "11.3.0"
+    "douyinVersion.dat": "11.3.0"
 }
