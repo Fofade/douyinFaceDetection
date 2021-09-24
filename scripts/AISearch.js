@@ -1,12 +1,12 @@
-let getPath = require(files.path("../utils/getPath.js"));
-let dfdObj = require(getPath.getRelativePath("../utils/setConfig.js"));
-let Logger = require(getPath.getRelativePath("../module/logger/logger.js"));
+let getPath = require(files.path("file://../utils/getPath.js"));
+let dfdObj = require(getPath.getRelativePath("file://../utils/setConfig.js"));
+let Logger = require(getPath.getRelativePath("file://../module/logger/logger.js"));
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",
   maxFileSize: 512 * 1024,
   maxBackupSize: 3,
-  dir: getPath.getRelativePath("../data/scripts/AISearch/"),
+  dir: getPath.getRelativePath("file://../data/scripts/AISearch/"),
 });
 
 logger.info("开始运行人脸识别脚本！");

@@ -1,7 +1,7 @@
 /**
  * 数据库操作
  */
-let getPath = require(files.path("../utils/getPath.js"));
+let getPath = require(files.path("file://../utils/getPath.js"));
 
 var loggerDB = (function () {
   let db = sqlite.open(
