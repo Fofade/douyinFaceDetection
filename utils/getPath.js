@@ -7,5 +7,7 @@ var getPath = (function () {
   q.getRelativePath = function (path) {
     return files.path(path);
   };
+
+  return q;
 })();
 module.exports = getPath;

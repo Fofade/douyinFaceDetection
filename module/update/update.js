@@ -1,5 +1,5 @@
 function update(onlineUrl, path, versionFileName) {
-  let getPath = require(files.path("file://../../utils/getPath.js"));
+  let getPath = require(files.path("file://../utils/getPath.js"));
   let getLatest = require(getPath.getRelativePath("./lastVersion.js"));
   let getCurrent = require(getPath.getRelativePath("./nowVersion.js"));
   let download = require(getPath.getRelativePath("./downFile.js"));
