@@ -43,12 +43,18 @@ var dfdObj = (function () {
     if (dfdDB.getValueByParam(param) == null) {
       if (param == "favorLocation") {
         if (obc[param] == "") {
-          obc[param] = findImage.getImageLocation(obj["favoriteBase64"], 0.9);
+          obc[param] = findImage.getImageLocation(obj["favoriteBase64"], 0.9, [
+            device.width / 2,
+            device.height / 4,
+          ]); // 找图区域，目前设置为设备右半边的下3/4
         }
         if (obc[param] != "") dfdDB.setValueByParam(param, obc[param]);
       } else if (param == "focusOnLocation") {
         if (obc[param] == "") {
-          obc[param] = findImage.getImageLocation(obj["focusOnBase64"], 0.9);
+          obc[param] = findImage.getImageLocation(obj["focusOnBase64"], 0.9, [
+            device.width / 2,
+            device.height / 4,
+          ]); // 找图区域，目前设置为设备右半边的下3/4
         }
         if (obc[param] != "") dfdDB.setValueByParam(param, obc[param]);
       } else {
