@@ -66,6 +66,7 @@ var dfdDB = (function () {
         param: param,
         value: value,
       });
+      log("新增数据:{" + param + ":" + value + "}");
       //cursor.close();
       //db.close();
     }

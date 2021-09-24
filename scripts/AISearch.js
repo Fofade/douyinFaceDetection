@@ -1,11 +1,11 @@
-let dfdObj = require("../utils/setConfig.js");
-let Logger = require("../module/logger/logger.js");
+let dfdObj = require("./utils/setConfig.js");
+let Logger = require("./module/logger/logger.js");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",
   maxFileSize: 512 * 1024,
   maxBackupSize: 3,
-  dir: "../data/scripts/AISearch/",
+  dir: files.cwd() + "/data/scripts/AISearch/",
 });
 
 logger.info("开始运行人脸识别脚本！");

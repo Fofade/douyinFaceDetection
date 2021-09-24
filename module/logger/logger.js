@@ -1,5 +1,5 @@
 let config = require("./config.js");
-let loggerDB = require("../db/loggerDB.js");
+let loggerDB = require("../../db/loggerDB.js");
 
 let levelList = ["info", "warn", "err", "debug"];
 
