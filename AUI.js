@@ -3,9 +3,9 @@
  * 全局变量
  */
 let getPath = require(files.path("./utils/getPath.js"));
-let dfdObj = require(getPath.getRelativePath("./utils/setConfig.js"));
-let dfdDB = require(getPath.getRelativePath("./db/dfdDB.js"));
-let loggerDB = require(getPath.getRelativePath("./db/loggerDB.js"));
+let dfdObj = require("./utils/setConfig.js");
+let dfdDB = require("./db/dfdDB.js");
+let loggerDB = require("./db/loggerDB.js");
 
 var jsPath = getPath.getRelativePath("./scripts/AISearch.js"); //脚本地址
 // console.show();

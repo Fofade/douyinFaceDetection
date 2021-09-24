@@ -1,5 +1,5 @@
 let getPath = require(files.path("file://../utils/getPath.js"));
-let config = require(getPath.getRelativePath("./config.js"));
+let config = require("./config.js");
 let loggerDB = require(getPath.getRelativePath("file://../db/loggerDB.js"));
 
 let levelList = ["info", "warn", "err", "debug"];
