@@ -35,7 +35,7 @@ var loggerDB = (function () {
     // 如果存在该参数则获取否则返回null
     let cursor = db.rawQuery("SELECT * FROM LOGGER WHERE " + param + " = ?", [
       value,
-    ]);
+    ]).all();
     if (cursor.length > 0) {
       // db.close();
       return cursor;
@@ -80,7 +80,7 @@ var loggerDB = (function () {
    * @returns
    */
   q.getAll = function () {
-    let cursor = db.rawQuery("SELECT * FROM LOGGER ", null);
+    let cursor = db.rawQuery("SELECT * FROM LOGGER ", null).all();
     let result = [];
     while (cursor.moveToNext()) {
       result.push(cursor.pick());

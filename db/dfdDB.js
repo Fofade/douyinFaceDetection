@@ -31,7 +31,7 @@ var dfdDB = (function () {
    */
   q.getValueByParam = function (param) {
     // 如果存在该参数则获取否则返回null
-    let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [param]);
+    let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [param]).all();
     if (cursor.length > 0) {
       //db.close();
       return cursor[0].value;
@@ -78,7 +78,7 @@ var dfdDB = (function () {
    */
   q.getAll = function () {
     // 获取所有配置
-    let cursor = db.rawQuery("SELECT * FROM DFD", null);
+    let cursor = db.rawQuery("SELECT * FROM DFD", null).all();
     let result = [];
     while (cursor.moveToNext()) {
       result.push(cursor.pick());
