@@ -17,11 +17,23 @@ var findImage = (function () {
     do {
       logger.info("等待两秒!");
       sleep(2000);
-      var img = captureScreen();
+      var img = images.grayscale(captureScreen());
       logger.info("已截图：[" + img + "]");
-      var img_s = images.fromBase64(image64);
+      var img_s = images.grayscale(images.fromBase64(image64));
       logger.info("已获取小图:[" + img_s + "]");
+      images.save(
+        img,
+        files.cwd() + "/data/image/img_" + count + ".png",
+        "png",
+        100
+      );
       logger.info("相似度：[" + simulation + "]");
+      images.save(
+        img_s,
+        files.cwd() + "/data/image/img_s_" + count + ".png",
+        "png",
+        100
+      );
       point = images.findImage(img, img_s, {
         region: region,
         threshold: simulation,
