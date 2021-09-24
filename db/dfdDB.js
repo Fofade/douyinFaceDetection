@@ -1,11 +1,11 @@
 /**
  * 数据库操作
  */
-let getPath = require(files.path("file://../utils/getPath.js"));
+// let getPath = require(files.path("file://../utils/getPath.js"));
 
 var dfdDB = (function () {
   let db = sqlite.open(
-    getPath.getRelativePath("./dfd.db"),
+    "./dfd.db",
     {
       version: 1,
     },

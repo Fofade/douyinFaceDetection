@@ -1,6 +1,5 @@
-let getPath = require(files.path("file://../utils/getPath.js"));
-let dfdDB = require(getPath.getRelativePath("file://../db/dfdDB.js"));
-let findImage = require(getPath.getRelativePath("file://../module/IMG/findImage.js"));
+let dfdDB = require("../db/dfdDB.js");
+let findImage = require("../module/IMG/findImage.js");
 
 var dfdObj = (function () {
   // 全局配置

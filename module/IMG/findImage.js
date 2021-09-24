@@ -1,12 +1,11 @@
 // 找图, 返回图片中心坐标("x,y")
-let getPath = require(files.path("file://../utils/getPath.js"));
-let Logger = require(getPath.getRelativePath("file://../module/logger/logger.js"));
+let Logger = require("../logger/logger");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",
   maxFileSize: 512 * 1024,
   maxBackupSize: 3,
-  dir: getPath.getRelativePath("file://../data/scripts/findImage/"),
+  dir: "../data/scripts/findImage/",
 });
 
 var findImage = (function () {
