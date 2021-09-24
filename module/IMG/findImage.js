@@ -17,19 +17,26 @@ var findImage = (function () {
     do {
       logger.info("等待两秒!");
       sleep(2000);
-      var img = images.threshold(
-        images.grayscale(captureScreen()),
+      var c1 = captureScreen();
+      var c2 = images.grayscale(c1); // 灰度
+      // 二值化
+      var c3 = images.threshold(
+        c2,
         100,
         255,
         "BINARY"
       );
+      var img = c1;
       logger.info("已截图：[" + img + "]");
-      var img_s = images.threshold(
-        images.grayscale(images.fromBase64(image64)),
+      var d1 = images.fromBase64(image64);
+      var d2 = images.grayscale(d1)
+      var d3 = images.threshold(
+        d2,
         100,
         255,
         "BINARY"
       );
+      var img_s = d1;
       logger.info("已获取小图:[" + img_s + "]");
       images.save(
         img,
@@ -56,6 +63,12 @@ var findImage = (function () {
         logger.info("恭喜！找图成功！");
       }
       // 内存回收
+      c1.recycle();
+      c2.recycle();
+      c3.recycle();
+      d1.recycle();
+      d2.recycle();
+      d3.recycle();
       img.recycle();
       img_s.recycle();
     } while (count > 0 && point == null);
