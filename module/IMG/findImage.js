@@ -17,9 +17,19 @@ var findImage = (function () {
     do {
       logger.info("等待两秒!");
       sleep(2000);
-      var img = images.grayscale(captureScreen());
+      var img = images.threshold(
+        images.grayscale(captureScreen()),
+        100,
+        255,
+        "BINARY"
+      );
       logger.info("已截图：[" + img + "]");
-      var img_s = images.grayscale(images.fromBase64(image64));
+      var img_s = images.threshold(
+        images.grayscale(images.fromBase64(image64)),
+        100,
+        255,
+        "BINARY"
+      );
       logger.info("已获取小图:[" + img_s + "]");
       images.save(
         img,
