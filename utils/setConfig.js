@@ -5,7 +5,7 @@ var dfdObj = (function () {
   // 全局配置
   let obj = {
     faceValue: 80, // 颜值
-    starNum: 2, // 数量
+    starNum: 10, // 数量
     gender: "female", // 性别
     appPackage: "com.ss.android.ugc.aweme", // 抖音包名
     ak: "KXIS86UejDFk9RzMxYp0DFMF", // 百度云图像识别ak
@@ -15,6 +15,9 @@ var dfdObj = (function () {
     focusOnBase64:
       "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABKhJREFUeF7tm02M20QUx//P+5U4ly0HJG6lIBSDEBWlpwouLQWxWcGFNgkIuHTLCQ6ohZ4op36JA5xoewEESZq9ULUg2NJLI050qyIEjhC03JB6aPeSr92NH/LmQ7bXThzbs3br5JqZeX6/eR7Pe/MfQsx/FHP/IRzAytP5bVNr7T0A7SKiJwHsAPCcA/jrAG4x85/AxPLaFP8y+3vhnshJEgKgkc5uZ6LXAcwDeN6PAwRUGLhEzIvJaulfP2PZ9Q0UQE3JzhGkQwC/GvSDdsajixJwLqEWfghq/EAA1NIHM0TSUb+zPYJTFQl8KqGWvh+hj21TXwCaT+R3aBN8EoAe7mH8ylKbjiX+KtzyatwzgFo6u0BEnwFIeDUeUL8mMb+XrJbOexnPE4BGOvcFEw57MSiqDzHOJqvFd0cdfyQAvPOd2WarVWbgxVENbUV7Bq7IMzMH6OaXK27tuQZQU958hKBdBvhZt4OH045uMKRMSv3mPzf2XQHQZ77RWr0afed7LtON5Mz0XjeR4ApATcktUUTD3mmWCbiSVIv7h0XBUABRXPCGOdWPAxcL40AAjXT2EBOdc2swiu2Y+XCqWnL0wRFAd5PzRwS+8365NqU2PeW0WXIEUFdyFwAc8GvdqX/9WB6r+3Zt/D398zLkEwVRpvRxF2W1aOuLLYCmkp3TQJdFPdHqy7tRP5I1DS+fKWH6x19FmQSzNp+qXtjkky2AupK7JjKxab61H823XzI5m/jqJyS+XhIGAEBFVosvWA1sAtBU8q9oYN9Z1iBPQgIABmdSlgxyE4C6kv9OXD7fwRIWAL2eIKuF14yTYwLQreTcFhmH4QIAiPlRY2XJBKCu5I4AOP0gAwBwVFaLZ/qbJaOzDSV3jX3W8NzAC+8V2Hg602LYjwC9eju9znfdOOC3TcgAsDpJD/WqzX0AtfQbGSLtkl/n3PQPG4BxT2AAkP2YiI67ccBvm/AB8PFUtfSJ7kcfgOitrxFa2AAAlGW1eNAKQN+HOp3Y+J10U/8IALguq8XdVgDs1Ut9b689vM119/VnHsP6zsdN7Sdv/o3J3/5xPYZ0556v3EFWixvRb3wFPAEwZnWunz6ghn6yyMAArFz9NCB3vA0zu/cDTx3HAMavQEBrgB5/D8oiGPvPoNAaYOQ3QrV0zLfCXZFDTJIhaT5V/XajQDpOh43vpuhqcM9WmLmALrpKGqrD45KYqSTWkbfFtyiqw4h1WVwH0NH6iTsW022EtQZIoDmrxnB8NGaXS4reE4RxOCqBM3bCykHH42WRAsgtPh7v1wCtEz4WSAwqp3TVoGc9lVwi0omYFwapSMciKTcT1VByS1FVhzo9v64aTQUhk9MNxF4o2dkgxVgq2wszPRLqrVY5qqpRXR2aECWWNidNMZXLWzJHXUX6eQSElE1mfn+QGnTQQj/0Mzioc1dNekKkoHLIV2pRatNHoVyZMVV5O8LKD0VqCy0gKszaaTvho5vPurGNrwiwGutoDLEgTmZHFxnaeavWb1SnhQHoDdy7OEnAfACiqwrul4uTdjPRuTpLe4D2iFdneXltauL+vDrrJyS3um+ga8BWP3wQ9v4HE1SEX+szZ8QAAAAASUVORK5CYII=", // 关注 图片的Base64码
     updatePath: "./", // //更新路径
+    videoAllTime: 30, // 单个视频最长识别时间(s)
+    eggA: 1, // 神秘正向彩蛋！
+    eggB: 1, // 神秘负向彩蛋！
   };
 
   // 全局变量

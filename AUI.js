@@ -13,6 +13,24 @@ ui.layout(
     <text textSize="30sp" textColor="#cd4acf">
       欢迎使用抖音智能辅助
     </text>
+    {/* 权限 */}
+    <Switch
+      textSize="25sp"
+      id="autoService"
+      text="无障碍服务:"
+      checked="{{auto.service != null}}"
+      w="auto"
+      textStyle="bold"
+      textColor="red"
+    />
+    <Switch
+      textSize="25sp"
+      id="autoFloat"
+      text="悬浮窗权限:"
+      w="auto"
+      textStyle="bold"
+      textColor="red"
+    />
     {/* logo */}
     <img radius="20" src="file://logo.jpg" w="auto" h="auto" circle="true" />
     <text>您想要小哥哥还是小姐姐?(默认为上一次选择)</text>
@@ -21,10 +39,19 @@ ui.layout(
       <radio id="rbtMale" text="小哥哥" />
       <radio id="rbtFeMale" text="小姐姐" />
     </radiogroup>
+    {/* 输入框 */}
     <text>您期望的小哥哥(小姐姐)颜值(百度的人脸检测太苛刻，建议50):</text>
     <input id="txtFaceValue" inputType="number" textSize="16sp" hint="0-100" />
     <text>您期待点赞关注的小哥哥(小姐姐)数量(建议10):</text>
-    <input id="txtStarNum" inputType="number" textSize="16sp" hint="小于999" />
+    <input
+      id="txtStarNum"
+      inputType="number"
+      textSize="16sp"
+      hint="大于零小于999"
+    />
+    <text>您期望的单个视频识别最大时长(单位/s):</text>
+    <input id="txtVideoScan" inputType="number" textSize="16sp" hint="大于零" />
+    {/* 功能区 */}
     <button
       id="btnStart"
       text="开始"
@@ -79,6 +106,28 @@ ui.layout(
 toast(
   "我是作者龙龙王,对于此软件我有最终解释权,使用软件即默认同意我的霸王条款!"
 );
+
+// 默认值-从数据库中读取
+(function () {
+  // 选项
+  if (dfdObj.getDfdObjParam("gender") == "female") {
+    ui.rbtFeMale.checked = true;
+  } else if (dfdObj.getDfdObjParam("gender") == "male") {
+    ui.rbtMale.checked = true;
+  }
+  // 值
+  if (dfdObj.getDfdObjParam("faceValue") != null) {
+    ui.txtFaceValue.attr("text", dfdObj.getDfdObjParam("faceValue"));
+  }
+  if (dfdObj.getDfdObjParam("starNum") != null) {
+    ui.txtStarNum.attr("text", dfdObj.getDfdObjParam("starNum"));
+  }
+  if (dfdObj.getDfdObjParam("videoAllTime") != null) {
+    ui.txtVideoScan.attr("text", dfdObj.getDfdObjParam("videoAllTime"));
+  }
+})();
+
+// 单选
 ui.rbtMale.on("check", (checked) => {
   if (checked) {
     dfdObj.setDfdObjParam("gender", "male");
@@ -89,20 +138,46 @@ ui.rbtFeMale.on("check", (checked) => {
     dfdObj.setDfdObjParam("gender", "female");
   }
 });
+ui.autoService.on("check", (checked) => {
+  if (checked && auto.service == null) {
+    app.startActivity({
+      action: "android.setting.ACCESSIBILITY_SETTINGS",
+    });
+    if (!checked && auto.service != null) {
+      auto.service.disableSelf();
+    }
+  }
+});
+ui.emitter.on("resume", () => {
+  ui.autoService.checked = auto.service != null;
+});
+ui.autoFloat.on("check", (checked) => {
+  if (checked) console.show();
+});
+
 // 开始
 ui.btnStart.click(() => {
   // 获取输入的值
   var faceValue = ui.txtFaceValue.text();
   if (faceValue.length == 0) {
     ui.txtFaceValue.setError("输入不能为空");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
     return;
   }
   var face = parseInt(faceValue);
   if (face <= 0) {
     ui.txtFaceValue.setError("颜值太低了!");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
     return;
   } else if (face > 100) {
     ui.txtFaceValue.setError("真的有人颜值突破一百分吗?");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
     return;
   } else {
     dfdObj.setDfdObjParam("faceValue", face);
@@ -113,23 +188,70 @@ ui.btnStart.click(() => {
   var starNum = ui.txtStarNum.text();
   if (starNum.length == 0) {
     ui.txtStarNum.setError("输入不能为空");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
     return;
   }
   var num = parseInt(starNum);
   if (num <= 0) {
     ui.txtStarNum.setError("数量太少了!");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
     return;
   } else if (num > 999) {
     ui.txtStarNum.setError("您忘了三星Note吗?");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
     return;
   } else {
     dfdObj.setDfdObjParam("faceValue", num);
   }
   ui.txtStarNum.setError(null);
 
+  // 单个视频时长
+  var videoScan = ui.txtVideoScan.text();
+  var vs = parseInt(videoScan);
+  if (vs <= 0) {
+    ui.txtVideoScan.setError("您搁着卡bug呢？要不要给您视频倒放啊！");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
+    return;
+  } else if (vs > 9999999) {
+    ui.txtStarNum.setError("您这是想看这个视频到地老天荒吗？");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
+    return;
+  } else {
+    dfdObj.setDfdObjParam("videoAllTime", vs);
+  }
+  ui.txtVideoScan.setError(null);
+
+  if (auto.service == null) {
+    toast("请打开无障碍服务！");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
+    return;
+  }
+  if (!ui.autoFloat.checked) {
+    toast("请打开悬浮窗！");
+    if (dfdObj.getDfdObjParam("eggB") != null) {
+      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+    }
+    return;
+  }
   log("开始运行！");
+  console.hide();
   if (files.exists(jsPath)) {
     engines.execScriptFile(jsPath);
+  }
+  if (dfdObj.getDfdObjParam("eggA") != null) {
+    dfdObj.getDfdObjParam("eggA", parseInt(dfdObj.getDfdObjParam("eggA")) + 1);
   }
 });
 
@@ -155,3 +277,8 @@ ui.btnExit.click(() => {
 //     update(url + "lastest/", dfdObj.updatePath + "lastest/", "update.json");
 //   });
 // });
+
+// 彩蛋模块
+// 正向彩蛋 => 通往天堂
+
+// 逆向彩蛋 => 通往地狱
