@@ -5,6 +5,7 @@
 let dfdObj = require("./utils/setConfig.js");
 let dfdDB = require("./db/dfdDB.js");
 let loggerDB = require("./db/loggerDB.js");
+let eggController = require("./ui/eggController");
 
 var jsPath = "./scripts/AISearch.js"; //脚本地址
 // console.show();
@@ -100,6 +101,11 @@ ui.layout(
     <text textSize="20sp" textColor="red">
       由此软件导致的任何问题都与此软件作者无关，若不同意，请勿使用！谢谢合作！🙏
     </text>
+    <card h="auto" margin="10" id="cdEgg" text="彩蛋区" w="*">
+      <text textSize="40sp" textColor="red">
+        欢迎来到德莱联盟！
+      </text>
+    </card>
   </vertical>
 );
 
@@ -124,6 +130,10 @@ toast(
   }
   if (dfdObj.getDfdObjParam("videoAllTime") != null) {
     ui.txtVideoScan.attr("text", dfdObj.getDfdObjParam("videoAllTime"));
+  }
+  // 区域显示
+  if(dfdObj.getDfdObjParam("eggB")!=null && dfdObj.getDfdObjParam("eggB")>100){
+    // 显示hell区域
   }
 })();
 
@@ -162,7 +172,10 @@ ui.btnStart.click(() => {
   if (faceValue.length == 0) {
     ui.txtFaceValue.setError("输入不能为空");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   }
@@ -170,13 +183,19 @@ ui.btnStart.click(() => {
   if (face <= 0) {
     ui.txtFaceValue.setError("颜值太低了!");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   } else if (face > 100) {
     ui.txtFaceValue.setError("真的有人颜值突破一百分吗?");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   } else {
@@ -189,7 +208,10 @@ ui.btnStart.click(() => {
   if (starNum.length == 0) {
     ui.txtStarNum.setError("输入不能为空");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   }
@@ -197,13 +219,19 @@ ui.btnStart.click(() => {
   if (num <= 0) {
     ui.txtStarNum.setError("数量太少了!");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   } else if (num > 999) {
     ui.txtStarNum.setError("您忘了三星Note吗?");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   } else {
@@ -217,13 +245,19 @@ ui.btnStart.click(() => {
   if (vs <= 0) {
     ui.txtVideoScan.setError("您搁着卡bug呢？要不要给您视频倒放啊！");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   } else if (vs > 9999999) {
     ui.txtStarNum.setError("您这是想看这个视频到地老天荒吗？");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   } else {
@@ -234,14 +268,20 @@ ui.btnStart.click(() => {
   if (auto.service == null) {
     toast("请打开无障碍服务！");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   }
   if (!ui.autoFloat.checked) {
     toast("请打开悬浮窗！");
     if (dfdObj.getDfdObjParam("eggB") != null) {
-      dfdObj.getDfdObjParam("eggB", parseInt(dfdObj.getDfdObjParam("eggB")) + 1);
+      dfdObj.getDfdObjParam(
+        "eggB",
+        parseInt(dfdObj.getDfdObjParam("eggB")) + 1
+      );
     }
     return;
   }
@@ -282,3 +322,7 @@ ui.btnExit.click(() => {
 // 正向彩蛋 => 通往天堂
 
 // 逆向彩蛋 => 通往地狱
+ui.cdEgg.click(() => {
+  eggController.pageInfo.save("main");
+  eggController.openPage("hell");
+});
