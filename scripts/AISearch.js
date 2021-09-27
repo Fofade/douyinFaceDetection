@@ -65,13 +65,7 @@ logger.info(
     dfdObj.getDfdObjParam("faceValue") +
     "分以上的用户!"
 );
-toast(
-  "运行结束！共关注" +
-    countAdd +
-    "位颜值" +
-    dfdObj.getDfdObjParam("faceValue") +
-    "分以上的用户!"
-);
+
 logger.info("谢谢您的使用，再见！");
 toast("谢谢您的使用，再见！");
 sleep(5000);
