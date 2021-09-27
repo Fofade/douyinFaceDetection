@@ -9,6 +9,10 @@ let logger = new Logger({
 
 var baseOperator = (function () {
   let q = {};
+
+  /**
+   * 由下至上滑动
+   */
   q.autoSwipe = function () {
     swipe(
       device.width / 2,
@@ -17,7 +21,9 @@ var baseOperator = (function () {
       device.height / 8,
       1500
     );
+    logger.info("滑动完成！");
   };
+
   /**
    * 循环点击
    * @param {*} clicks 点击集合{name, x, y}
