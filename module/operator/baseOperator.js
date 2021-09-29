@@ -36,7 +36,20 @@ var baseOperator = (function () {
       } else logger.warn(c["name"] + "控件获取失败！就不点了！你自个儿点吧！");
     });
   };
+
+  /**
+   * 按压(click 补充操作)
+   * @param {*} press 按压集合{name, x, y, t} t 代表时长,单位毫秒
+   */
+  q.autoPress = function (press) {
+    press.forEach((p) => {
+      if (p["x"] != null) {
+        press(p["x"], p["y"], p["t"]);
+        logger.info(p["name"] + "完成！");
+      } else logger.warn(p["name"] + "控件获取失败！就不点了！你自个儿点吧！");
+    });
+  };
   return q;
 })();
 
-module.exports = faceDetection;
+module.exports = baseOperator;
