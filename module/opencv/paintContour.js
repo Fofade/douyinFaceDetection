@@ -20,7 +20,7 @@ var paintContour = (function () {
    * @param {*} img 图片
    * @param {*} color 画笔颜色
    * @param {*} bold 画笔粗细
-   * ////@returns 画好的图
+   * @returns 画好的图
    */
   q.paint = function (img, color, bold) {
     let c = getContours.getContoursByBase(img); // 轮廓数据
@@ -37,8 +37,8 @@ var paintContour = (function () {
       });
     canvasOperator.autoPaintPath(paths); // 画轮廓
     logger.info("轮廓绘画完成！");
-    // let img_new = ;
-    // return img_new; // 新的画了路径的图片
+    let img_new = canvas.toImage();
+    return img_new; // 新的画了路径的图片
   };
 
   return q;
