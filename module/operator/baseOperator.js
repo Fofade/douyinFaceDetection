@@ -49,6 +49,22 @@ var baseOperator = (function () {
       } else logger.warn(p["name"] + "控件获取失败！就不点了！你自个儿点吧！");
     });
   };
+
+  /**
+   * 批量保存图片
+   * @param {*} imgs 传入图片对象{name, img, type}
+   */
+  q.saveImage = function (imgs) {
+    imgs.forEach((i) => {
+      if (i != null)
+        images.save(
+          i["img"],
+          files.cwd() + "/data/image/img_s_" + i["name"] + "." + i["type"],
+          i["type"],
+          100
+        );
+    });
+  };
   return q;
 })();
 

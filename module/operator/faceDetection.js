@@ -54,6 +54,7 @@ var faceDetection = (function () {
           algorithmIncrease.leapfrog({ num: ladderTime, count: j }); // 算法跃迁
           videoScan -= ladderTime;
         }
+        img.recycle();
       }
       baseOperator.autoSwipe();
       swipeCount++;
@@ -105,6 +106,7 @@ var faceDetection = (function () {
           algorithmIncrease.isometric({ num: ladderTime, count: j }); // 算法跃迁-plus版可以更频繁
           videoScan -= ladderTime;
         }
+        img.recycle();
       }
       baseOperator.autoSwipe();
       swipeCount++;

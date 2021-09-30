@@ -1,4 +1,5 @@
 // 找图, 返回图片中心坐标("x,y")
+let baseOperator = require("../operator/baseOperator");
 let Logger = require("../logger/logger");
 
 let logger = new Logger({
@@ -20,37 +21,17 @@ var findImage = (function () {
       var c1 = captureScreen();
       var c2 = images.grayscale(c1); // 灰度
       // 二值化
-      var c3 = images.threshold(
-        c2,
-        100,
-        255,
-        "BINARY"
-      );
+      var c3 = images.threshold(c2, 100, 255, "BINARY");
       var img = c1;
       logger.info("已截图：[" + img + "]");
       var d1 = images.fromBase64(image64);
-      var d2 = images.grayscale(d1)
-      var d3 = images.threshold(
-        d2,
-        100,
-        255,
-        "BINARY"
-      );
+      var d2 = images.grayscale(d1);
+      var d3 = images.threshold(d2, 100, 255, "BINARY");
       var img_s = d1;
       logger.info("已获取小图:[" + img_s + "]");
-      images.save(
-        img,
-        files.cwd() + "/data/image/img_" + count + ".png",
-        "png",
-        100
-      );
+      // baseOperator.saveImage({ name: "小图" + count, img: img_s, type: "png" });
       logger.info("相似度：[" + simulation + "]");
-      images.save(
-        img_s,
-        files.cwd() + "/data/image/img_s_" + count + ".png",
-        "png",
-        100
-      );
+      // baseOperator.saveImage({ name: "大图" + count, img: img, type: "png" });
       point = images.findImage(img, img_s, {
         region: region,
         threshold: simulation,
