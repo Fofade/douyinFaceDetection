@@ -36,6 +36,7 @@ var paintContour = (function () {
         paths.push(obj);
       });
     canvasOperator.autoPaintPath(paths); // 画轮廓
+    logger.info("轮廓绘画完成！");
     // let img_new = ;
     // return img_new; // 新的画了路径的图片
   };
