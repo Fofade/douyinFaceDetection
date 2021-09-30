@@ -64,6 +64,10 @@ var canvasOperator = (function () {
     logger.info("画矩形[" + n + "]完毕！");
   };
 
+  /**
+   * 循环画矩形
+   * @param {*} rects 矩形合集
+   */
   q.autoPaintRect = function (rects) {
     if (rects != null && rects.length > 0) {
       logger.info("开始循环画矩形！");
@@ -81,6 +85,35 @@ var canvasOperator = (function () {
       });
       logger.info("循环画矩形完毕！");
     }
+  };
+
+  /**
+   * 画路径
+   * @param {*} n name
+   * @param {*} path 路径
+   * @param {*} c 颜色
+   * @param {*} b 粗细 -1 为充满
+   */
+  q.paintPath = function (n, p, c, b) {
+    let pi = new Paint();
+    if (b == -1) pi.setStyle(Paint.STYLE.FILL);
+    if (c != null) pi.setColor(c);
+    else pi.setColor(colors.RED);
+    logger.info("开始路径[" + n + "]！");
+    canvas.drawPath(p, pi);
+    logger.info("画路径[" + n + "]完毕！");
+  };
+
+  /**
+   * 循环画路径
+   * @param {*} paths
+   */
+  q.autoPaintPath = function (paths) {
+    if (paths != null && paths.length > 0)
+      paths.forEach((p) => {
+        if (p != null) this.paintPath(p["n"], p["p"], p["c"], p["b"]);
+      });
+    logger.info("循环画路径完毕！");
   };
   return q;
 })();
