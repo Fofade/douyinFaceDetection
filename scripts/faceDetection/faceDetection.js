@@ -1,8 +1,8 @@
-let Logger = require("../../module/logger/loggerger/logger");
-let baseOperator = require("../../module/operator/baseOperatorperator/baseOperator");
-let netOperator = require("../../module/operator/netOperatoroperator/netOperator");
-let localFaceDetection = require("../localFaceDetection/localFaceDetection");
-let algorithmIncrease = require("../../module/operator/algorithmIncreaseor/algorithmIncrease");
+let Logger = require("../../module/logger/logger");
+let baseOperator = require("../../module/operator/baseOperator");
+let netOperator = require("../../module/operator/netOperator");
+let localFaceDetection = require("./localFaceDetection/localFaceDetection");
+let algorithmIncrease = require("../../module/operator/algorithmIncrease");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",

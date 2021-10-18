@@ -1,9 +1,9 @@
 // 画轮廓
-let getContours = require("../../module/opencv/getContoursopencv/getContours");
-let parseContoursFilter = require("../../module/opencv/parseContoursFilterarseContoursFilter");
-let parseContours = require("../../module/opencv/parseContoursencv/parseContours");
-let canvasOperator = require("../../module/operator/canvasOperatorasOperator");
-let Logger = require("../../module/logger/loggerger/logger");
+let getContours = require("../../module/opencv/getContours");
+let parseContoursFilter = require("../../module/opencv/parseContours");
+let parseContours = require("../../module/opencv/parseContours");
+let canvasOperator = require("../../module/operator/canvasOperator");
+let Logger = require("../../module/logger/logger");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",

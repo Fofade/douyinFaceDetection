@@ -59,6 +59,23 @@ var algorithmIncrease = (function () {
     result.y = ay * tCubed + by * tSquared + cy * offset + screenPoint[0].y;
     return result;
   };
+
+  /**
+   * 数据排序
+   * @param {*} key 关键字, 数据内的关键字(数值)
+   * @param {*} method 排序方法 asc desc
+   * @returns 排序后的结果
+   */
+  q.sortData = function (key, method, data) {
+    if (method == "desc")
+      return data.sort((a, b) => {
+        return a[key] - b[key];
+      });
+    else if (method == "asc")
+      return data.sort((a, b) => {
+        return b[key] - a[key];
+      });
+  };
   return q;
 })();
 

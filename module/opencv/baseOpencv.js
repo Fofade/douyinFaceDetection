@@ -78,6 +78,83 @@ var baseOpencv = (function () {
     return contours;
   };
 
+  /**
+   * 比较相似轮廓(实现)-存在未定义方法,无法使用
+   * @param {*} contours1 解析后的小轮廓(单个)
+   * @param {*} contours2 解析后的大轮廓(多)
+   * @returns contours2中相似的轮廓数组
+   */
+  q.equalContours = function (contours1, contours2) {
+    let equals = [];
+    // 小轮廓矩形度和宽高比
+    let smallImgRectangularity = getRectangularity(contours1); // 未知方法
+    let smallImgAspectRatio = getAspectRatio(contours1); // 未知方法
+    // 设定矩形度上下限(误差值), 宽高比同理
+    let rectangularityUnit = 0.1;
+    // 矩形度上下限
+    let rectangularityLowerLimit =
+      smallImgRectangularity - rectangularityUnit < 0
+        ? 0
+        : smallImgRectangularity - rectangularityUnit;
+    let rectangularityUpperLimit =
+      smallImgRectangularity + rectangularityUnit > 1
+        ? 1
+        : smallImgRectangularity + rectangularityUnit;
+    // 宽高比上下限
+    let rectangularityHeightWidthLowerLimit =
+      smallImgAspectRatio - rectangularityUnit < 0
+        ? 0
+        : smallImgAspectRatio - rectangularityUnit;
+    let rectangularityHeightWidthUpperLimit =
+      smallImgAspectRatio + rectangularityUnit > 1
+        ? 1
+        : smallImgAspectRatio + rectangularityUnit;
+    // 遍历大轮廓数据
+    contours2.forEach((c2) => {
+      // 矩形度
+      let itemRectangularity = getRectangularity(c2); // 未知方法
+      // 宽高比
+      let itemHeightWidthLimit = getAspectRatio(c2);
+      if (
+        itemRectangularity > rectangularityLowerLimit &&
+        itemRectangularity < rectangularityUpperLimit
+      ) {
+        logger.info("矩形度匹配完成！");
+        if (
+          itemHeightWidthLimit > rectangularityHeightWidthLowerLimit &&
+          itemHeightWidthLimit < rectangularityHeightWidthUpperLimit
+        ) {
+          logger.info("宽高比匹配完成！");
+          equals.push(c2);
+          logger.info("新增相似轮廓！");
+        }
+      }
+    });
+    return equals;
+  };
+
+  /**
+   * opencv自带轮廓比较函数
+   * @param {*} contours1 解析前的小轮廓1-取第一个
+   * @param {*} contours2 解析前的轮廓2
+   * @param {*} method 比较方式
+   * @param {*} parameter 参数
+   * @returns 比较结果 double 数组 按轮廓2数据顺序
+   */
+  q.autoEqualsContours = function (contours1, contours2, method, parameter) {
+    let match = []; // double 数组
+    let method_tmp = null;
+    if (method == 1) method_tmp = Imgproc.CV_CONTOURS_MATCH_I1;
+    // 不确定参数是否正确
+    else if (method == 2) method_tmp = Imgproc.CV_CONTOURS_MATCH_I2;
+    else if (method == 3) method_tmp = Imgproc.CV_CONTOURS_MATCH_I2;
+    logger.info("开始计算轮廓相似度！");
+    contours2.forEach((c) => {
+      match.push(Imgproc.matchShapes(c, contours1[0], method_tmp, parameter));
+    });
+    logger.info("相似度计算完成！");
+    return match;
+  };
   return q;
 })();
 
