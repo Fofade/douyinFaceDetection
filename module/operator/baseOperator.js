@@ -1,3 +1,4 @@
+let algorithmIncrease = require("./algorithmIncrease");
 let Logger = require("../logger/logger");
 
 let logger = new Logger({
@@ -22,6 +23,59 @@ var baseOperator = (function () {
       1500
     );
     logger.info("滑动完成！");
+  };
+
+  /**
+   * 仿真滑动-增加随机延迟
+   */
+  q.autoSimulationSwipe = function () {
+    this.curvatureSwipe(
+      device.width / 2,
+      device.height * 0.8,
+      device.width / 2,
+      device.height * 0.1,
+      300
+    );
+    sleep(random(100, 1000)); // 0.1-1s 随机延迟
+  };
+
+  /**
+   * 曲率滑动-(塞贝尔曲线)
+   * @param {*} qx qx
+   * @param {*} qy qy
+   * @param {*} zx zx
+   * @param {*} zy zy
+   * @param {*} time time
+   */
+  q.curvatureSwipe = function (qx, qy, zx, zy, time) {
+    var xxy = [time];
+    var point = [];
+    var dx0 = {
+      x: qx,
+      y: qy,
+    };
+    var dx1 = {
+      x: radom(qx - 100, qx + 100),
+      y: radom(qy, qy + 50),
+    };
+    var dx2 = {
+      x: radom(zx - 100, zx + 100),
+      y: radom(zy, zy + 50),
+    };
+    var dx3 = {
+      x: zx,
+      y: zy,
+    };
+    point.push(dx0);
+    point.push(dx1);
+    point.push(dx2);
+    point.push(dx3);
+    for (let i = 0; i < 1; i += 0.08) {
+      let newPoint = algorithmIncrease.bezier_curves(point, i);
+      var tmpXy = [parseInt(newPoint.x), parseInt(newPoint.y)];
+      xxy.push(tmpXy);
+    }
+    gesture.apply(null, xxy);
   };
 
   /**
