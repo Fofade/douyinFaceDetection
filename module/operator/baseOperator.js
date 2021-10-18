@@ -92,6 +92,33 @@ var baseOperator = (function () {
   };
 
   /**
+   * 批量仿真点击
+   * @param {*} clicks 点击集合{name, x1, y1, x2, y2}
+   */
+  q.autoSimulationClick = function (clicks) {
+    clicks.forEach((c) => {
+      if (c["x1"] != null) {
+        this.SimulationClick(c["x1"], c["y1"], c["x2"], c["y2"]);
+        sleep(random(10, 1000)); // 0.01-1s 随机延迟
+        logger.info(c["name"] + "完成[随机延迟]！");
+      } else logger.warn(c["name"] + "点击失败！就不点了！你自个儿点吧！");
+    });
+  };
+
+  /**
+   * 范围内仿真点击
+   * @param {*} x1 左上角x
+   * @param {*} y1 左上角y
+   * @param {*} x2 右下角x
+   * @param {*} y2 右下角y
+   */
+  q.SimulationClick = function (x1, y1, x2, y2) {
+    var xx = radom(x1, x2);
+    var yy = radom(y1, y2);
+    click(x, y);
+  };
+
+  /**
    * 按压(click 补充操作)
    * @param {*} press 按压集合{name, x, y, t} t 代表时长,单位毫秒
    */
