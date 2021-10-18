@@ -1,8 +1,8 @@
-let Logger = require("../logger/logger");
-let baseOperator = require("./baseOperator");
-let netOperator = require("./netOperator");
+let Logger = require("../../module/logger/loggerger/logger");
+let baseOperator = require("../../module/operator/baseOperatorperator/baseOperator");
+let netOperator = require("../../module/operator/netOperatoroperator/netOperator");
 let localFaceDetection = require("../localFaceDetection/localFaceDetection");
-let algorithmIncrease = require("./algorithmIncrease");
+let algorithmIncrease = require("../../module/operator/algorithmIncreaseor/algorithmIncrease");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",
@@ -63,7 +63,7 @@ var faceDetection = (function () {
   };
 
   /**
-   * 人脸识别执行脚本-强化模式=>增加本地识别
+   * 人脸识别执行脚本-强化模式=>增加本地识别(人脸识别js)
    * @param {*} videoScanTime 单视频扫描时长
    * @param {*} requires 待操作视频数
    * @param {*} ak 百度ak

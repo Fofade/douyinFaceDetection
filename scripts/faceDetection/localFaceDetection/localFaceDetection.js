@@ -10,7 +10,7 @@
 // tinyYolov2 识别身体轮廓的算法，不知道怎么用
 // https://github.com/justadudewhohacks/face-api.js/#getting-started
 let faceapi = require("./lib/dist/face-api.min");
-let Logger = require("../logger/logger");
+let Logger = require("../../../module/logger/logger");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",

@@ -1,6 +1,6 @@
 let dfdObj = require("./utils/setConfig.js");
 let Logger = require("./module/logger/logger.js");
-let faceDetection = require("./modules/operator/faceDetection.js");
+let faceDetection = require("./scripts/faceDetection/faceDetection.js");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",
