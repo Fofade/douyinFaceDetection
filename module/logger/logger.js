@@ -1,3 +1,4 @@
+console.log("【模块】logger:", files.cwd());
 let config = require("./config.js");
 let loggerDB = require("../../db/loggerDB.js");
 

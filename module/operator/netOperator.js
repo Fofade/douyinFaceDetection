@@ -1,3 +1,4 @@
+console.log("【模块】netOperator:", files.cwd());
 let Logger = require("../logger/logger");
 
 let logger = new Logger({

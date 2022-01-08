@@ -1,4 +1,5 @@
 // 算法
+console.log("【模块】algorithmIncrease:", files.cwd());
 let Logger = require("../logger/logger");
 
 let logger = new Logger({

@@ -1,3 +1,5 @@
+console.log("【模块】opencv:", files.cwd());
+
 runtime.images.initOpenCvIfNeeded();
 importClass(java.util.ArrayList);
 importClass(org.opencv.imgproc.Imgproc);

@@ -1,5 +1,6 @@
+console.log("【模块】findImage:", files.cwd());
 // 找图, 返回图片中心坐标("x,y")
-let baseOperator = require("../operator/baseOperator");
+// let baseOperator = require("../operator/baseOperator");
 let Logger = require("../logger/logger");
 
 let logger = new Logger({
