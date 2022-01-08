@@ -1,6 +1,7 @@
-let dfdObj = require("../../utils/setConfig.js");
-let Logger = require("../../module/logger/logger.js");
-let faceDetection = require("../../scripts/faceDetection/base/faceDetection.js");
+// 只服务于上级脚本，所以路径需要特殊设置
+let dfdObj = require("./utils/setConfig.js");
+let Logger = require("./module/logger/logger.js");
+let faceDetection = require("./scripts/faceDetection/base/faceDetection.js");
 
 let logger = new Logger({
   filenamePattern: "yyyy_MM_dd_HH_mm_ss",
