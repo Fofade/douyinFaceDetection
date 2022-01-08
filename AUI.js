@@ -7,7 +7,7 @@ let dfdDB = require("./db/dfdDB.js");
 let loggerDB = require("./db/loggerDB.js");
 let eggController = require("./ui/eggController");
 
-var jsPath = "./scripts/AISearch.js"; //脚本地址
+var jsPath = "./scripts/faceDetection/AISearch.js"; //脚本地址
 // console.show();
 ui.layout(
   <vertical padding="16">
