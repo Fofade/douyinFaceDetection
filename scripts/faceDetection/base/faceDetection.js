@@ -53,6 +53,7 @@ var faceDetection = (function () {
         } else {
           algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁
           videoScan -= ladderTime;
+          logger.info("当前视频剩余识别时间:" + videoScan);
         }
         img.recycle();
       }
