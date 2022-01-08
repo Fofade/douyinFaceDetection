@@ -106,7 +106,7 @@ var faceDetection = (function () {
         } else {
           algorithmIncrease.isometric(ladderTime, j); // 算法跃迁-plus版可以更频繁
           videoScan -= ladderTime;
-          logger.info("当前视频剩余时间:"+videoScan);
+          logger.info("本次识别消耗时间:" + ladderTime + "剩余时间:" + videoScan);
         }
         img.recycle();
       }
