@@ -1,6 +1,6 @@
 console.log("【模块】findImage:", files.cwd());
 // 找图, 返回图片中心坐标("x,y")
-let baseOperator = require("../operator/baseOperator");
+// let baseOperator = require("../operator/baseOperator");
 let Logger = require("../logger/logger");
 
 let logger = new Logger({
@@ -38,17 +38,17 @@ var findImage = (function () {
       var d3 = images.threshold(d2, 100, 255, "BINARY");
       var img_s = d1;
       logger.info("已获取小图:[" + img_s + "]");
-      baseOperator.saveImage([{
-        name: "小图" + count,
-        img: img_s,
-        type: "png"
-      }]);
+      // baseOperator.saveImage([{
+      //   name: "小图" + count,
+      //   img: img_s,
+      //   type: "png"
+      // }]);
       logger.info("期望相似度：[" + simulation + "]");
-      baseOperator.saveImage([{
-        name: "大图" + count,
-        img: img,
-        type: "png"
-      }]);
+      // baseOperator.saveImage([{
+      //   name: "大图" + count,
+      //   img: img,
+      //   type: "png"
+      // }]);
       // findImage
       point = images.matchTemplate(img, img_s, {
         region: region,
