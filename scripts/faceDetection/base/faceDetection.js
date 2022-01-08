@@ -49,11 +49,15 @@ var faceDetection = (function () {
             baseOperator.autoClick(clicks);
             favorCount++;
             videoScan = -1;
+          }else {
+            algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁
+            videoScan -= ladderTime;
+            logger.info("[有图]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
           }
         } else {
           algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁
           videoScan -= ladderTime;
-          logger.info("当前视频剩余识别时间:" + videoScan);
+          logger.info("[无图]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
         }
         img.recycle();
       }
@@ -102,11 +106,15 @@ var faceDetection = (function () {
             baseOperator.autoClick(clicks);
             favorCount++;
             videoScan = -1;
+          }else {
+            algorithmIncrease.isometric(ladderTime, j); // 算法跃迁-plus版可以更频繁
+            videoScan -= ladderTime;
+            logger.info("[有脸]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
           }
         } else {
           algorithmIncrease.isometric(ladderTime, j); // 算法跃迁-plus版可以更频繁
           videoScan -= ladderTime;
-          logger.info("本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
+          logger.info("[无脸]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
         }
         img.recycle();
       }
