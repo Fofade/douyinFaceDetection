@@ -23,7 +23,7 @@ var findImage = (function () {
    */
   q.getImageLocation = function (image64, simulation, region) {
     logger.info("开始寻找小图!");
-    let point = null;
+    let point = {};
     do {
       logger.info("等待两秒!");
       sleep(2000);
@@ -50,18 +50,31 @@ var findImage = (function () {
       //   type: "png"
       // }]);
       // findImage
-      point = images.matchTemplate(img, img_s, {
+      let res = images.matchTemplate(img, img_s, {
         region: region,
         threshold: simulation,
         max: 10,
         transparentMask: true,
       });
-      logger.info("找图结果:[" + JSON.stringify(point) + "]");
-      if (point == null) {
+      logger.info("找图结果:[" + JSON.stringify(res) + "]");
+      if (res == null) {
         logger.warn("找图失败！再次尝试！");
         count--;
       } else {
         logger.info("恭喜！找图成功！");
+        res["matches"].forEach(r => {
+          if (point.s) {
+            if (r["similarity"] > point.s) {
+              point.x = r["x"];
+              point.y = r["y"];
+              point.s = r["similarity"];
+            }
+          } else {
+            point.x = r["x"];
+            point.y = r["y"];
+            point.s = r["similarity"];
+          }
+        });
       }
       // 内存回收
       c1.recycle();
