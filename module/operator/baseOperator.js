@@ -139,7 +139,7 @@ var baseOperator = (function () {
   q.saveImage = function (imgs) {
     imgs.forEach((i) => {
       if (i != null) {
-        files.ensureDir(files.cwd() + "/data/image/img_s_" + i["name"] + "." + i["type"], );
+        // files.ensureDir(files.cwd() + "/data/image/img_s_" + i["name"] + "." + i["type"], );
         images.save(
           i["img"],
           files.cwd() + "/data/image/img_s_" + i["name"] + "." + i["type"],
