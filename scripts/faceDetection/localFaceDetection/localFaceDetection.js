@@ -22,7 +22,7 @@ let logger = new Logger({
 var localFaceDetection = (function () {
   let q = {};
 
-  q.isExistsFace = function (image) {
+  q.isExistsFace = async function (image) {
     let detections = null;
     logger.info("正在加载本地识别模型！");
     Promise.all([
