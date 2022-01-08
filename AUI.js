@@ -235,7 +235,7 @@ ui.btnStart.click(() => {
     }
     return;
   } else {
-    dfdObj.setDfdObjParam("faceValue", num);
+    dfdObj.setDfdObjParam("starNum", num);
   }
   ui.txtStarNum.setError(null);
 
