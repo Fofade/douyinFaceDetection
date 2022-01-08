@@ -49,7 +49,7 @@ var dfdDB = (function () {
    */
   q.setValueByParam = function (par, ve) {
     // 如果存在该参数则设置否则创建
-    let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]);
+    let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]).all();
     if (cursor.length > 0) {
       db.update(
         "DFD",
@@ -59,7 +59,7 @@ var dfdDB = (function () {
         "param = ?",
         [par]
       );
-      log("更新数据结果:{" + par + ":" + db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]) + "}");
+      log("更新数据结果:{" + par + ":" + db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]).all() + "}");
       //cursor.close();
       //db.close();
     } else {
