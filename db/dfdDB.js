@@ -47,26 +47,27 @@ var dfdDB = (function () {
    * @param {*} param
    * @param {*} value
    */
-  q.setValueByParam = function (param, value) {
+  q.setValueByParam = function (par, ve) {
     // 如果存在该参数则设置否则创建
-    let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [param]);
+    let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]);
     if (cursor.length > 0) {
       db.update(
         "DFD",
         {
-          value: value,
+          value: ve,
         },
         "param = ?",
-        [param]
+        [par]
       );
+      log("更新数据:{" + par + ":" + ve + "}");
       //cursor.close();
       //db.close();
     } else {
       db.insert("DFD", {
-        param: param,
-        value: value,
+        param: par,
+        value: ve,
       });
-      log("新增数据:{" + param + ":" + value + "}");
+      log("新增数据:{" + par + ":" + ve + "}");
       //cursor.close();
       //db.close();
     }

@@ -50,13 +50,13 @@ var faceDetection = (function () {
             favorCount++;
             videoScan = -1;
           }else {
-            let o = algorithmIncrease.isometric(ladderTime, j); // 算法跃迁
+            let o = algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁
             ladderTime = o.num;
             videoScan -= ladderTime;
             logger.info("[有图]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
           }
         } else {
-          let o = algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁
+          let o = algorithmIncrease.isometric(ladderTime, j); // 算法跃迁
           ladderTime = o.num;
           videoScan -= ladderTime;
           logger.info("[无图]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
@@ -109,13 +109,13 @@ var faceDetection = (function () {
             favorCount++;
             videoScan = -1;
           }else {
-            let o = algorithmIncrease.isometric(ladderTime, j); // 算法跃迁-plus版可以更频繁
+            let o = algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁-plus版可以更频繁
             ladderTime = o.num;
             videoScan -= ladderTime;
             logger.info("[有脸]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
           }
         } else {
-          let o = algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁-plus版可以更频繁
+          let o = algorithmIncrease.isometric(ladderTime, j); // 算法跃迁-plus版可以更频繁
           ladderTime = o.num;
           videoScan -= ladderTime;
           logger.info("[无脸]本次识别消耗时间:" + ladderTime / 1000 + "s 剩余时间:" + videoScan / 1000 + "s");
