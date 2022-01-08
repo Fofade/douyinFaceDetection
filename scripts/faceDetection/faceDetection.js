@@ -1,7 +1,7 @@
 let Logger = require("../../module/logger/logger");
 let baseOperator = require("../../module/operator/baseOperator");
 let netOperator = require("../../module/operator/netOperator");
-let localFaceDetection = require("./localFaceDetection/localFaceDetection");
+let localFaceDetection = require("../faceDetection/localFaceDetection/localFaceDetection");
 let algorithmIncrease = require("../../module/operator/algorithmIncrease");
 
 let logger = new Logger({
