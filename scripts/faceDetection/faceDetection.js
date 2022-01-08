@@ -51,7 +51,7 @@ var faceDetection = (function () {
             videoScan = -1;
           }
         } else {
-          algorithmIncrease.leapfrog({ num: ladderTime, count: j }); // 算法跃迁
+          algorithmIncrease.leapfrog(ladderTime, j); // 算法跃迁
           videoScan -= ladderTime;
         }
         img.recycle();
@@ -103,7 +103,7 @@ var faceDetection = (function () {
             videoScan = -1;
           }
         } else {
-          algorithmIncrease.isometric({ num: ladderTime, count: j }); // 算法跃迁-plus版可以更频繁
+          algorithmIncrease.isometric(ladderTime, j); // 算法跃迁-plus版可以更频繁
           videoScan -= ladderTime;
         }
         img.recycle();
