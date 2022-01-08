@@ -38,9 +38,9 @@ var findImage = (function () {
       var d3 = images.threshold(d2, 100, 255, "BINARY");
       var img_s = d1;
       logger.info("已获取小图:[" + img_s + "]");
-      baseOperator.saveImage({ name: "小图" + count, img: img_s, type: "png" });
+      baseOperator.saveImage([{ name: "小图" + count, img: img_s, type: "png" }]);
       logger.info("期望相似度：[" + simulation + "]");
-      baseOperator.saveImage({ name: "大图" + count, img: img, type: "png" });
+      baseOperator.saveImage([{ name: "大图" + count, img: img, type: "png" }]);
       // findImage
       point = images.matchTemplate(img, img_s, {
         region: region,
