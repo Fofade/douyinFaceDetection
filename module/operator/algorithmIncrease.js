@@ -17,7 +17,7 @@ var algorithmIncrease = (function () {
    * @param {*} param0 传入数据
    * @returns
    */
-  q.leapfrog = function ({ num, count }) {
+  q.leapfrog = function (num, count ) {
     //蛙跳当然是等差向前跳了
     num = num + num * count;
     count = count + 1;
@@ -30,7 +30,7 @@ var algorithmIncrease = (function () {
    * @param {*} param0 传入数据
    * @returns
    */
-  q.isometric = function ({ num, count }) {
+  q.isometric = function (num, count) {
     // 等距当然是原地不动了
     count = count + 1;
     logger.info("【等距完成】: {" + num + "," + count + "}");
