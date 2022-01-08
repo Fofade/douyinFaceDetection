@@ -1,5 +1,5 @@
 console.log("【模块】baseOperator:", files.cwd());
-let algorithmIncrease = require("./algorithmIncrease");
+let algorithmIncrease = require("../operator/algorithmIncrease");
 let Logger = require("../logger/logger");
 
 let logger = new Logger({

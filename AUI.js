@@ -165,7 +165,7 @@ ui.autoFloat.on("check", (checked) => {
   if (checked) console.show();
 });
 
-// 开始
+// 开始-验证数据
 ui.btnStart.click(() => {
   // 获取输入的值
   var faceValue = ui.txtFaceValue.text();
