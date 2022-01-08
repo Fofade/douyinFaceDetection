@@ -5,7 +5,7 @@
 
 var loggerDB = (function () {
   let db = sqlite.open(
-    "./dfd.db",
+    files.cwd()+"/data/dfd.db",
     {
       version: 1,
     },

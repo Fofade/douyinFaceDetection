@@ -1,3 +1,4 @@
+// 只服务于上级脚本，所以路径需要特殊设置
 let Logger = require("../../../module/logger/logger");
 let baseOperator = require("../../../module/operator/baseOperator");
 let netOperator = require("../../../module/operator/netOperator");
