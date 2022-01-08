@@ -28,20 +28,22 @@ if (app.launch(dfdObj.getDfdObjParam("appPackage"))) {
     exit();
   }
 
-  var addStar_x = (addStar_y = null);
+  var addStar_x = null;
+  var addStar_y = null;
   logger.info("正在定位点赞控件！");
   if (dfdObj.getDfdObjParam("favorLocation") != null) {
     addStar_x = dfdObj.getDfdObjParam("favorLocation").split(",")[0];
     addStar_y = dfdObj.getDfdObjParam("favorLocation").split(",")[1];
-    logger.info("定位点赞控件成功!");
+    logger.info("定位点赞控件成功![" + addStar_x + "," + addStar_y + "]");
   }
 
-  var addHeart_x = (addHeart_y = null);
+  var addHeart_x = null;
+  var addHeart_y = null;
   logger.info("正在定位关注控件！");
   if (dfdObj.getDfdObjParam("focusOnLocation") != null) {
     addHeart_x = dfdObj.getDfdObjParam("focusOnLocation").split(",")[0];
     addHeart_y = dfdObj.getDfdObjParam("focusOnLocation").split(",")[1];
-    logger.info("定位关注控件成功!");
+    logger.info("定位关注控件成功![" + addHeart_x + "," + addHeart_y + "]");
   }
   var res = faceDetection.faceDetection(
     dfdObj.getDfdObjParam("videoAllTime"),
@@ -50,9 +52,16 @@ if (app.launch(dfdObj.getDfdObjParam("appPackage"))) {
     dfdObj.getDfdObjParam("sk"),
     dfdObj.getDfdObjParam("gender"),
     dfdObj.getDfdObjParam("faceValue"),
-    [
-      { name: "点赞", x: addStar_x, y: addStar_y },
-      { name: "关注", x: addHeart_x, y: addHeart_y },
+    [{
+        name: "点赞",
+        x: addStar_x,
+        y: addStar_y
+      },
+      {
+        name: "关注",
+        x: addHeart_x,
+        y: addHeart_y
+      },
     ]
   );
   if (res != null && res[1] != null) {
@@ -61,10 +70,10 @@ if (app.launch(dfdObj.getDfdObjParam("appPackage"))) {
 }
 logger.info(
   "运行结束！共关注" +
-    countAdd +
-    "位颜值" +
-    dfdObj.getDfdObjParam("faceValue") +
-    "分以上的用户!"
+  countAdd +
+  "位颜值" +
+  dfdObj.getDfdObjParam("faceValue") +
+  "分以上的用户!"
 );
 
 logger.info("谢谢您的使用，再见！");
