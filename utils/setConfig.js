@@ -20,8 +20,8 @@ var dfdObj = (function () {
 
   // 全局变量
   let obc = {
-    favorLocation: dfdDB.getValueByParam("favorLocation") | "", // 点赞控件的中心
-    focusOnLocation: dfdDB.getValueByParam("focusOnLocation") | "", // 关注控件的中心
+    favorLocation: dfdDB.getValueByParam("favorLocation") == null ? "" : dfdDB.getValueByParam("favorLocation"), // 点赞控件的中心
+    focusOnLocation: dfdDB.getValueByParam("focusOnLocation") == null ? "" : dfdDB.getValueByParam("focusOnLocation"), // 关注控件的中心
   };
 
   let q = {};
@@ -41,28 +41,26 @@ var dfdObj = (function () {
    * @returns
    */
   q.getDfdObjParam = function (param) {
-    if (dfdDB.getValueByParam(param) == null) {
-      if (param == "favorLocation") {
-        if (obc[param] == "") {
-          obc[param] = findImage.getImageLocation(obj["favoriteBase64"], 0.9, [
-            device.width / 2,
-            device.height / 4,
-          ]); // 找图区域，目前设置为设备右半边的下3/4
-        }
-        if (obc[param] != "") dfdDB.setValueByParam(param, obc[param]);
-      } else if (param == "focusOnLocation") {
-        if (obc[param] == "") {
-          obc[param] = findImage.getImageLocation(obj["focusOnBase64"], 0.9, [
-            device.width / 2,
-            device.height / 4,
-          ]); // 找图区域，目前设置为设备右半边的下3/4
-        }
-        if (obc[param] != "") dfdDB.setValueByParam(param, obc[param]);
-      } else {
-        log("插入值【" + param + "】:[" + obj[param] + "]");
-        dfdDB.setValueByParam(param, obj[param]);
-        log("检查插入值【" + dfdDB.getValueByParam(param) + "】");
+    if (param == "favorLocation") {
+      if (obc[param] == "") {
+        obc[param] = findImage.getImageLocation(obj["favoriteBase64"], 0.9, [
+          device.width / 2,
+          device.height / 4,
+        ]); // 找图区域，目前设置为设备右半边的下3/4
       }
+      if (obc[param] != "") dfdDB.setValueByParam(param, obc[param]);
+    } else if (param == "focusOnLocation") {
+      if (obc[param] == "") {
+        obc[param] = findImage.getImageLocation(obj["focusOnBase64"], 0.9, [
+          device.width / 2,
+          device.height / 4,
+        ]); // 找图区域，目前设置为设备右半边的下3/4
+      }
+      if (obc[param] != "") dfdDB.setValueByParam(param, obc[param]);
+    } else {
+      log("插入值【" + param + "】:[" + obj[param] + "]");
+      dfdDB.setValueByParam(param, obj[param]);
+      log("检查插入值【" + dfdDB.getValueByParam(param) + "】");
     }
     return dfdDB.getValueByParam(param);
   };
