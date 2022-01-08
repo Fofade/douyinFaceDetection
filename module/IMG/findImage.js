@@ -65,16 +65,17 @@ var findImage = (function () {
         res["matches"].forEach(r => {
           if (point.s) {
             if (r["similarity"] > point.s) {
-              point.x = r["x"];
-              point.y = r["y"];
+              point.x = r["point"]["x"];
+              point.y = r["point"]["y"];
               point.s = r["similarity"];
             }
           } else {
-            point.x = r["x"];
-            point.y = r["y"];
+            point.x = r["point"]["x"];
+            point.y = r["point"]["y"];
             point.s = r["similarity"];
           }
         });
+        logger.info("定位结果:[" + JSON.stringify(point) + "]");
       }
       // 内存回收
       c1.recycle();
