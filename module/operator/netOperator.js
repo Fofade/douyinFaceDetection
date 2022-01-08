@@ -59,18 +59,18 @@ var netOperator = (function () {
    */
   q.baiduFaceDetectionResultParse = function (res, gender, faceValue) {
     if (res != null)
-      if (str["error_msg"] == "pic not has face") {
+      if (res["error_msg"] == "pic not has face") {
         logger.info("没有检测到人脸！");
-      } else if (str["error_msg"] == "SUCCESS") {
-        logger.info("检测到了" + str["result"]["face_num"] + "张人脸");
+      } else if (res["error_msg"] == "SUCCESS") {
+        logger.info("检测到了" + res["result"]["face_num"] + "张人脸");
         logger.info(
-          "人脸性别为：" + str["result"]["face_list"][0]["gender"]["type"]
+          "人脸性别为：" + res["result"]["face_list"][0]["gender"]["type"]
         );
-        logger.info("人脸年龄为：" + str["result"]["face_list"][0]["age"]);
-        logger.info("人脸颜值为：" + str["result"]["face_list"][0]["beauty"]);
+        logger.info("人脸年龄为：" + res["result"]["face_list"][0]["age"]);
+        logger.info("人脸颜值为：" + res["result"]["face_list"][0]["beauty"]);
 
-        if (str["result"]["face_list"][0]["gender"]["type"] == gender) {
-          if (str["result"]["face_list"][0]["beauty"] > faceValue) {
+        if (res["result"]["face_list"][0]["gender"]["type"] == gender) {
+          if (res["result"]["face_list"][0]["beauty"] > faceValue) {
             logger.info("人脸颜值合格!");
             return true;
           }
