@@ -1,6 +1,6 @@
 console.log("【模块】findImage:", files.cwd());
 // 找图, 返回图片中心坐标("x,y")
-// let baseOperator = require("../operator/baseOperator");
+let baseOperator = require("../operator/baseOperator");
 let Logger = require("../logger/logger");
 
 let logger = new Logger({
@@ -13,6 +13,14 @@ let logger = new Logger({
 var findImage = (function () {
   let q = {};
   let count = 20; // 找图最大次数
+
+  /**
+   * 获取小图位置
+   * @param {*} image64 小图
+   * @param {*} simulation 相似度
+   * @param {*} region 限制区域
+   * @returns 
+   */
   q.getImageLocation = function (image64, simulation, region) {
     logger.info("开始寻找小图!");
     let point = null;
@@ -30,12 +38,15 @@ var findImage = (function () {
       var d3 = images.threshold(d2, 100, 255, "BINARY");
       var img_s = d1;
       logger.info("已获取小图:[" + img_s + "]");
-      // baseOperator.saveImage({ name: "小图" + count, img: img_s, type: "png" });
-      logger.info("相似度：[" + simulation + "]");
-      // baseOperator.saveImage({ name: "大图" + count, img: img, type: "png" });
-      point = images.findImage(img, img_s, {
+      baseOperator.saveImage({ name: "小图" + count, img: img_s, type: "png" });
+      logger.info("期望相似度：[" + simulation + "]");
+      baseOperator.saveImage({ name: "大图" + count, img: img, type: "png" });
+      // findImage
+      point = images.matchTemplate(img, img_s, {
         region: region,
         threshold: simulation,
+        max: 10,
+        transparentMask: true,
       });
       logger.info("找图结果:[" + point + "]");
       if (point == null) {
