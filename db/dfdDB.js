@@ -5,18 +5,16 @@
 
 var dfdDB = (function () {
   let db = sqlite.open(
-    files.cwd()+"/data/dfd.db",
-    {
+    files.cwd() + "/data/dfd.db", {
       version: 1,
-    },
-    {
+    }, {
       onOpen: function (db) {
         db.execSQL(
           "CREATE TABLE IF NOT EXISTS DFD(" +
-            "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
-            "`param` TEXT NOT NULL," +
-            "`value` TEXT" +
-            ")"
+          "`id` INTEGER PRIMARY KEY AUTOINCREMENT," +
+          "`param` TEXT NOT NULL," +
+          "`value` TEXT" +
+          ")"
         );
       },
     }
@@ -52,14 +50,13 @@ var dfdDB = (function () {
     let cursor = db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]).all();
     if (cursor.length > 0) {
       db.update(
-        "DFD",
-        {
+        "DFD", {
           value: ve,
         },
         "param = ?",
         [par]
       );
-      log("更新数据结果:{" + par + ":" + db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]).all() + "}");
+      log("更新数据结果:{" + par + ":" + JSON.stringify(db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]).all()) + "}");
       //cursor.close();
       //db.close();
     } else {
