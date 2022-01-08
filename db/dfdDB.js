@@ -59,7 +59,7 @@ var dfdDB = (function () {
         "param = ?",
         [par]
       );
-      log("更新数据:{" + par + ":" + ve + "}");
+      log("更新数据结果:{" + par + ":" + db.rawQuery("SELECT * FROM DFD WHERE param = ?", [par]) + "}");
       //cursor.close();
       //db.close();
     } else {
