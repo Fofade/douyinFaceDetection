@@ -1,1 +1,3 @@
 *.apk
+/data/
+*.log
