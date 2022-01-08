@@ -109,4 +109,4 @@ var Pytorch = (function () {
     return q;
 })();
 
-exports.module = Pytorch;
+module.exports = Pytorch;
