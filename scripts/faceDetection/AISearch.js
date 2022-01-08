@@ -31,7 +31,7 @@ if (app.launch(dfdObj.getDfdObjParam("appPackage"))) {
   var addStar_x = null;
   var addStar_y = null;
   logger.info("正在定位点赞控件！");
-  if (dfdObj.getDfdObjParam("favorLocation") != null) {
+  if (dfdObj.getDfdObjParam("favorLocation") != null && dfdObj.getDfdObjParam("favorLocation") != undefined) {
     addStar_x = dfdObj.getDfdObjParam("favorLocation").split(",")[0];
     addStar_y = dfdObj.getDfdObjParam("favorLocation").split(",")[1];
     logger.info("定位点赞控件成功![" + addStar_x + "," + addStar_y + "]");
@@ -40,7 +40,7 @@ if (app.launch(dfdObj.getDfdObjParam("appPackage"))) {
   var addHeart_x = null;
   var addHeart_y = null;
   logger.info("正在定位关注控件！");
-  if (dfdObj.getDfdObjParam("focusOnLocation") != null) {
+  if (dfdObj.getDfdObjParam("focusOnLocation") != null && dfdObj.getDfdObjParam("focusOnLocation") != undefined) {
     addHeart_x = dfdObj.getDfdObjParam("focusOnLocation").split(",")[0];
     addHeart_y = dfdObj.getDfdObjParam("focusOnLocation").split(",")[1];
     logger.info("定位关注控件成功![" + addHeart_x + "," + addHeart_y + "]");
