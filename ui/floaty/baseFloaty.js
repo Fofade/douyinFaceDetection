@@ -38,6 +38,7 @@ var baseFloaty = (function () {
                     } else if (p.type === "touch") {
                         w.setTouchable(p.value);
                     }
+                    // 其他类型判定加在此处
                     logger.info(p.name + "完成！");
                 });
                 logger.info("加载数据完成！");
