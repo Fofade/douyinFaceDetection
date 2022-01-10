@@ -59,12 +59,14 @@ if (app.launch(dfdObj.getDfdObjParam("appPackage"))) {
     [{
         name: "点赞",
         x: addStar_x,
-        y: addStar_y
+        y: addStar_y,
+        t: 200
       },
       {
         name: "关注",
         x: addHeart_x,
-        y: addHeart_y
+        y: addHeart_y,
+        t: 200
       },
     ]
   );

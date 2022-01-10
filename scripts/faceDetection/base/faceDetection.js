@@ -46,7 +46,7 @@ var faceDetection = (function () {
             res != null &&
             netOperator.baiduFaceDetectionResultParse(res, gender, faceValue)
           ) {
-            baseOperator.autoClick(clicks);
+            baseOperator.autoPress(clicks);
             favorCount++;
             videoScan = -1;
           }else {

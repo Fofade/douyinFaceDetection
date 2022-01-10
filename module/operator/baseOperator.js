@@ -85,10 +85,9 @@ var baseOperator = (function () {
    */
   q.autoClick = function (clicks) {
     clicks.forEach((c) => {
-      if (c["x"] != null) {
-        click(c["x"], c["y"]);
+      if (c["x"] != null && click(c["x"], c["y"])) {
         logger.info(c["name"] + "完成！");
-      } else logger.warn(c["name"] + "控件获取失败！就不点了！你自个儿点吧！");
+      } else logger.warn(c["name"] + "点击失败！不点了！你自个儿点吧！");
     });
   };
 
@@ -123,12 +122,11 @@ var baseOperator = (function () {
    * 按压(click 补充操作)
    * @param {*} press 按压集合{name, x, y, t} t 代表时长,单位毫秒
    */
-  q.autoPress = function (press) {
-    press.forEach((p) => {
-      if (p["x"] != null) {
-        press(p["x"], p["y"], p["t"]);
+  q.autoPress = function (pres) {
+    pres.forEach((p) => {
+      if (p["x"] != null && press(p["x"], p["y"], p["t"])) {
         logger.info(p["name"] + "完成！");
-      } else logger.warn(p["name"] + "控件获取失败！就不点了！你自个儿点吧！");
+      } else logger.warn(p["name"] + "按压失败！不按了！你自个儿按吧！");
     });
   };
 
