@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "ajServe": "node node_modules/@vue/cli-service/bin/vue-cli-service.js serve\n",
-    "build": "vue-cli-service build",
-    "ajBuild": "sh build.sh",
+    "dev": "vue-cli-service serve",
+    "serve": "node node_modules/@vue/cli-service/bin/vue-cli-service.js serve\n",
+    "bud": "vue-cli-service build",
+    "build": "sh build.sh",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
