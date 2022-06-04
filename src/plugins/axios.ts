@@ -38,12 +38,12 @@ _axios.interceptors.response.use(
 
 export default {
   install: function (app: any, options: any) {
-    console.log(options);
+    console.log(options)
     // 添加全局的方法
-    app.config.globalProperties.axios = _axios;
+    app.config.globalProperties.axios = _axios
     // 添加全局的方法
     app.config.globalProperties.$translate = (key: any) => {
-      return key;
-    };
-  },
-};
+      return key
+    }
+  }
+}
