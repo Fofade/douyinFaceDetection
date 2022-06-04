@@ -31,7 +31,6 @@
     "webpack": "^5.69.1",
     "webpack-cli": "^4.9.2",
     "axios": "^0.18.0",
-    "dayjs": "^1.8.0",
     "eslint": "^7.32.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-node": "^11.1.0",
