@@ -2,7 +2,7 @@
   <div></div>
 </template>
 
-<script>
+<script >
 import { useMessage } from 'naive-ui'
 import { defineComponent, getCurrentInstance } from 'vue'
 export default defineComponent({

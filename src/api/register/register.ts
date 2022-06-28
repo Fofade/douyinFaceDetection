@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // eslint-disable-next-line @typescript-eslint/no-this-alias
 const that: any = this
-export function Login (username: string, password: string): boolean {
+export function Register (username: string, password: string): boolean {
   that
     .axios({
-      method: 'post ',
-      url: '/login ',
+      method: 'post',
+      url: '/register',
       data: {
         username: username,
         password: password

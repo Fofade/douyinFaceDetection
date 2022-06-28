@@ -3,6 +3,7 @@ import { createStore, ModuleTree } from 'vuex'
 const modulesFiles = require.context('./modules', true, /\.ts$/)
 const modules = modulesFiles
   .keys()
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   .reduce((modules: ModuleTree<any>, modulePath: string) => {
     const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1').split('/')
     const value = modulesFiles(modulePath)
