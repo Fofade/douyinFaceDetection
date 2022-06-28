@@ -26,5 +26,5 @@ import RegisterUser from '@/components/Index/Register/RegisterUser.vue'
     RegisterUser
   }
 })
-export default class Login extends Vue {}
+export default class LoginOnline extends Vue {}
 </script>

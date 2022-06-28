@@ -1,11 +1,11 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Login from '@/views/Index/Login/Login.vue'
+import LoginOnline from '@/views/Index/Login/LoginOnline.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'Index',
-    component: Login
+    component: LoginOnline
   }
   // {
   //   path: '/Login',
