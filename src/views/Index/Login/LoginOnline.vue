@@ -7,24 +7,23 @@
       pane-style="padding: 20px;"
     >
       <n-tab-pane name="登录"> 登录 </n-tab-pane>
-      <n-tab-pane name="注册">
-        <RegisterUser /> </n-tab-pane
+      <n-tab-pane name="注册"> <RegisterUser /> </n-tab-pane
     ></n-tabs>
   </n-card>
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { NButton, NCard, NTabs, NTabPane } from 'naive-ui'
-import RegisterUser from '@/components/Index/Register/RegisterUser.vue'
+import { Options, Vue } from "vue-class-component";
+import { NButton, NCard, NTabs, NTabPane } from "naive-ui";
+import RegisterUser from "@/components/Index/Register/RegisterUser.vue";
 @Options({
   components: {
     NButton,
     NCard,
     NTabs,
     NTabPane,
-    RegisterUser
-  }
+    RegisterUser,
+  },
 })
 export default class LoginOnline extends Vue {}
 </script>

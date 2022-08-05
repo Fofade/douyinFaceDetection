@@ -27,28 +27,28 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component'
-import { NButton, NForm, NGrid, NFormItemGi, NInput } from 'naive-ui'
+import { Options, Vue } from "vue-class-component";
+import { NButton, NForm, NGrid, NFormItemGi, NInput } from "naive-ui";
 @Options({
   components: {
     NButton,
     NForm,
     NGrid,
     NFormItemGi,
-    NInput
-  }
+    NInput,
+  },
 })
 export default class RegisterUser extends Vue {
   /**
    * 注冊用戶
    */
   registerUser = {
-    username: '',
-    password: '',
-    email: '',
-    iCode: '',
-    eCode: ''
-  }
+    username: "",
+    password: "",
+    email: "",
+    iCode: "",
+    eCode: "",
+  };
 
   /**
    * 注册表单规则
@@ -56,28 +56,28 @@ export default class RegisterUser extends Vue {
   registerRules = {
     username: {
       required: true,
-      trigger: ['blur', 'input'],
-      message: '请输入 用户名'
+      trigger: ["blur", "input"],
+      message: "请输入 用户名",
     },
     password: {
       required: true,
-      trigger: ['blur', 'input'],
-      message: '请输入 密码'
-    }
-  }
+      trigger: ["blur", "input"],
+      message: "请输入 密码",
+    },
+  };
 
   /**
    * 挂载前
    */
-  mounted () {
+  mounted() {
     // 获取图片二维码
   }
 
-  SendCode () {
+  SendCode() {
     // 发送邮件二维码
   }
 
-  Register () {
+  Register() {
     // 提交表单
   }
 }

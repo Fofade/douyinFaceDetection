@@ -34,7 +34,7 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx"
-  ],
+, "src/plugins/ocr/ocr.js"  ],
   "exclude": [
     "node_modules"
   ]
