@@ -23,6 +23,8 @@
         <n-input v-model:value="registerUser.eCode" placeholder="邮件验证码" />
       </n-form-item-gi>
     </n-grid>
+    <n-button @click="Register"> 注册</n-button>
+    <n-button id="SendCode"> 发验证码</n-button>
   </n-form>
 </template>
 
@@ -79,6 +81,8 @@ export default class RegisterUser extends Vue {
 
   Register() {
     // 提交表单
+    // eslint-disable-next-line no-undef
+    $autojs.invoke("show-log");
   }
 }
 </script>
